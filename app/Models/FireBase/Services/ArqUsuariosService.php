@@ -4,6 +4,7 @@ namespace App\Models\Firebase\Services;
 
 use App\Models\Firebase\Entities\Arquitectura\ArqUsuario;
 use App\Models\Firebase\EntityService;
+use App\Services\Md5Crypt;
 use Kreait\Firebase\Database;
 use Kreait\Firebase\Factory;
 
@@ -19,6 +20,9 @@ class ArqUsuariosService extends EntityService{
         return new ArqUsuario(array_merge(['id' => array_key_first($preresults)], $preresults[array_key_first($preresults)]));
     }
 
+    /**
+     * @return array<ArqUsuario>
+     */
     public function getAll(): array{
         $results = [];
         $preresults = parent::getAll();
@@ -30,6 +34,13 @@ class ArqUsuariosService extends EntityService{
     }
 
     public function save(ArqUsuario $objeto) : ArqUsuario {
+        if ($objeto->id == null) {
+            $password = $objeto->contrasenia;
+            $password = Md5Crypt::crypt($password);
+            if ($password != '') {
+                $objeto->contrasenia = $password;
+            }
+        }
         return parent::saveEntity($objeto, ArqUsuario::path());
     }
 

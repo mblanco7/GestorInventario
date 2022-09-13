@@ -47,7 +47,7 @@ class InitController extends Controller
         // $last->usuario = '1098123456';
         // $this->service->save($last);
         
-        //return ["Bienvenido a Gestor de Invetario"];
+        return ["Bienvenido a Gestor de Invetario"];
     }
 
 }
