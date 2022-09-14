@@ -4,6 +4,9 @@ namespace App\Models\Firebase;
 
 class Model {
 
+    static function path() : string { return ''; }
+    static function pref() : string { return ''; }
+
     public ?string $id = null;
  
     public function __construct(array $atributos = []) {

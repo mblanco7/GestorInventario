@@ -32,14 +32,12 @@ class EntityService {
     public function saveEntity(Model $objeto, string $path) {
         if ($objeto->id != null) {
             $id = $objeto->id;
-            $objeto->id = null;
             $reference = $this->database->getReference($path.'/'.$id);
-            $objeto->id = $id;
             $reference->set($objeto);
         } else {
             $reference = $this->database->getReference($path);
-            $idReference = $reference->push($objeto);
-            $objeto->id = $idReference->getKey();
+            $objeto->id = $objeto::pref().$reference->push()->getKey();
+            $reference->set([$objeto->id => $objeto]);
         }
         return $objeto;
     }

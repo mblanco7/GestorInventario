@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('index', 'App\Http\Controllers\Api\InitController@index');
+Route::get('seedFbG1Id', 'App\Http\Controllers\Api\InitController@seedData');

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Firebase\Services\ArqPerfilesService;
 use App\Models\Firebase\Services\ArqUsuariosService;
 use Illuminate\Support\ServiceProvider;
 use Kreait\Firebase\Factory;
@@ -14,7 +15,8 @@ class FireBaseServiceProvider extends ServiceProvider
      * @var array
      */
     public $singletons = [
-        ArqUsuariosService::class
+        ArqUsuariosService::class,
+        ArqPerfilesService::class,
     ];
 
     /**
