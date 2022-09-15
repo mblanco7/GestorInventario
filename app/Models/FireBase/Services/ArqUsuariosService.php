@@ -5,19 +5,18 @@ namespace App\Models\Firebase\Services;
 use App\Models\Firebase\Entities\Arquitectura\ArqUsuario;
 use App\Models\Firebase\EntityService;
 use App\Services\Md5Crypt;
-use Kreait\Firebase\Database;
-use Kreait\Firebase\Factory;
+use Google\Cloud\Firestore\FirestoreClient;
 
 class ArqUsuariosService extends EntityService{
  
-    public function __construct(Factory $factory)
+    public function __construct(FirestoreClient $factory)
     {
        parent::__construct($factory, ArqUsuario::path());
     }
 
     public function getById(string $id): ArqUsuario{
         $preresults = parent::getById($id);
-        return new ArqUsuario(array_merge(['id' => array_key_first($preresults)], $preresults[array_key_first($preresults)]));
+        return new ArqUsuario($preresults);
     }
 
     /**
@@ -27,8 +26,8 @@ class ArqUsuariosService extends EntityService{
         $results = [];
         $preresults = parent::getAll();
         foreach ($preresults as $key => $value) {
-            $objeto = new ArqUsuario(array_merge(['id' => $key], $value));
-           array_push($results, $objeto);
+            $objeto = new ArqUsuario($value);
+            array_push($results, $objeto);
         }
         return $results;
     }

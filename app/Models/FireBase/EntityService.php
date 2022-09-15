@@ -2,44 +2,82 @@
 
 namespace App\Models\Firebase;
 
-use Kreait\Firebase\Database;
-use Kreait\Firebase\Database\Reference;
-use Kreait\Firebase\Factory;
+use Exception;
+use Google\Cloud\Firestore\CollectionReference;
+use Google\Cloud\Firestore\FirestoreClient;
+use ReflectionClass;
 
 class EntityService {
 
-    private $path;
-    private Factory $factory;
-    protected Database $database;
-    protected Reference $reference;
+    private int $deep = 1;
+    
+    protected FirestoreClient $database;
+    protected CollectionReference $collection;
 
-    public function __construct(Factory $factory, $path)
+
+    public function __construct(FirestoreClient $database, $path)
     {
-        $this->path = $path;
-        $this->factory = $factory;
-        $this->database = $factory->createDatabase();
-        $this->reference = $this->database->getReference($path);
+        $this->database = $database;
+        $this->collection = $this->database->collection($path);
     }
 
     public function getById(string $id) {
-        return $this->reference->orderByKey()->equalTo($id)->limitToFirst(1)->getSnapshot()->getValue();
+        $result = ($this->collection->where('id', '=', $id)->documents()->rows()[0])->data();
+        $this->initializeAtrributes($result, $this->deep);
+        return $result;
     }
 
-    public function getAll() {
-        return $this->reference->getSnapshot()->getValue();
+    public function getAll() : array {
+        $results = [];
+        $documents = $this->collection->documents();
+        foreach ($documents as $document) {
+            if ($document->exists()) {
+                $data = $document->data();
+                $this->initializeAtrributes($data, $this->deep);
+                array_push($results, $data);
+            }
+        }
+        return $results;
     }
 
-    public function saveEntity(Model $objeto, string $path) {
+    private function initializeAtrributes(&$data, int $deep) {
+        foreach ($data as $attr => $value) {
+            if ($deep > 0 && gettype($value) == 'object' && get_class($value) == 'Google\Cloud\Firestore\DocumentReference') {
+                $snapValue = $value->snapshot()->data();
+                $data[$attr] = $snapValue;
+                $this->initializeAtrributes($data[$attr], --$deep);
+            }
+        }
+    }
+
+    public function saveEntity(Model $objeto) {
         if ($objeto->id != null) {
             $id = $objeto->id;
-            $reference = $this->database->getReference($path.'/'.$id);
-            $reference->set($objeto);
+            $reference = $this->collection->document($id);
+            $reference->update($this->generateArray($objeto));
         } else {
-            $reference = $this->database->getReference($path);
-            $objeto->id = $objeto::pref().$reference->push()->getKey();
-            $reference->set([$objeto->id => $objeto]);
+            $array = $this->generateArray($objeto);
+            $reference = $this->collection->add();
+            $array['id'] = $objeto->id = $reference->id();
+            $this->collection->document($objeto->id)->set($array);
         }
         return $objeto;
     }
 
+    public function generateArray($objeto) {
+        $array = [];
+        $rf = new ReflectionClass($objeto::class);
+        foreach ($objeto as $attr => $value) {
+            try {
+                $property = $rf->getProperty($attr);
+                if (str_contains($property->getType(), 'App\Models\Firebase\Entities')) {
+                    $documentReference = $this->database->collection($value->path())->document($value->id);
+                    $array[$attr] = $documentReference;
+                } else {
+                    $array[$attr] = $value;
+                }
+            } catch (Exception $e) {}
+        }
+        return $array;
+    }
 }

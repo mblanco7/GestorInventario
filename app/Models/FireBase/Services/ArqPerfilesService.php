@@ -4,13 +4,11 @@ namespace App\Models\Firebase\Services;
 
 use App\Models\Firebase\Entities\Arquitectura\ArqPerfil;
 use App\Models\Firebase\EntityService;
-use App\Services\Md5Crypt;
-use Kreait\Firebase\Database;
-use Kreait\Firebase\Factory;
+use Google\Cloud\Firestore\FirestoreClient;
 
 class ArqPerfilesService extends EntityService{
  
-    public function __construct(Factory $factory)
+    public function __construct(FirestoreClient $factory)
     {
        parent::__construct($factory, ArqPerfil::path());
     }
@@ -34,7 +32,8 @@ class ArqPerfilesService extends EntityService{
     }
 
     public function save(ArqPerfil $objeto) : ArqPerfil {
-        return parent::saveEntity($objeto, ArqPerfil::path());
+        
+        return parent::saveEntity($objeto);
     }
 
 }

@@ -33,31 +33,30 @@ class InitController extends Controller
     ) {
         $this->service1 = $service1;
         $this->service2 = $service2;
-
-        $database = $factory->createDatabase();
-        $reference = $database->getReference("");
-
-        print json_encode($reference->getSnapshot()->getValue());
     }
 
     public function index() 
     {   
         // Ejemplo de consulta de registro por id
-        //return $this->service1->getById();
+        //print json_encode($this->service1->getById('a'));
 
         // Ejemplo de consulta de todos los registros
-        //return $this->service1->getAll();
+        // print json_encode($this->service1->getAll());
+        
 
         // Ejemplo de guardado de un registro
         //$first = new ArqUsuario(['usuario' => '1098123456', 'contrasenia' => '123456']);
         //$this->service1->save($first);
-        //return $first;
+        //print json_encode($first);
 
         // Ejemplo de actualizacion de un registro
         // $first = $this->service1->getByKey('-NBcyH06zDdStUDLUdpu');
         // $last = clone $first;
         // $last->usuario = '1098123456';
         // $this->service1->save($last);
+
+
+
         return ["Bienvenido a Gestor de Invetario"];
     }
 
