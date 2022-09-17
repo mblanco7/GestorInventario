@@ -2,7 +2,7 @@
 
 namespace App\Models\Firebase\Services;
 
-use App\Models\Firebase\Entities\Arquitectura\ArqUsuario;
+use App\Models\Firebase\Entities\ArqUsuario;
 use App\Models\Firebase\EntityService;
 use App\Services\Md5Crypt;
 use Google\Cloud\Firestore\FirestoreClient;
@@ -43,4 +43,13 @@ class ArqUsuariosService extends EntityService{
         return parent::saveEntity($objeto, ArqUsuario::path());
     }
 
+    public function validarExisteUsuario(string $usuario, string $contrasenia): ArqUsuario {
+        $password = Md5Crypt::crypt($contrasenia);
+        $existe = $this->collection
+            ->where('usuario', '=', $usuario)
+            ->where('contrasenia', '=', $password)
+            ->documents()->rows()[0]->data() ?? null;
+        $existe = $existe != null ? new ArqUsuario($existe) : null;
+        return $existe;
+    }
 }

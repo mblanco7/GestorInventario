@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Firebase\Entities\Arquitectura;
+namespace App\Models\Firebase\Entities;
 
 use App\Models\Firebase\Model;
 

@@ -2,7 +2,7 @@
 
 namespace App\Models\Firebase\Services;
 
-use App\Models\Firebase\Entities\Arquitectura\ArqPerfil;
+use App\Models\Firebase\Entities\ArqPerfil;
 use App\Models\Firebase\EntityService;
 use Google\Cloud\Firestore\FirestoreClient;
 
@@ -21,8 +21,7 @@ class ArqPerfilesService extends EntityService{
     /**
      * @return array<ArqPerfil>
      */
-    public function getAll(): array{
-        $results = [];
+    public function getAll(): array{ $results = [];
         $preresults = parent::getAll();
         foreach ($preresults as $key => $value) {
             $objeto = new ArqPerfil(array_merge(['id' => $key], $value));

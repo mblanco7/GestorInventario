@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\Arquitectura\ArqPerfil;
-use App\Models\Firebase\Entities\Arquitectura\ArqUsuario;
+use App\Models\Firebase\Entities\ArqPerfil;
+use App\Models\Firebase\Entities\ArqUsuario;
+use App\Models\Firebase\Iterators\ArqPerfilList;
 use App\Models\Firebase\Services\ArqPerfilesService;
 use App\Models\Firebase\Services\ArqUsuariosService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+
+use Firebase\JWT\JWT;
 
 use Kreait\Firebase\Factory;
 
@@ -54,26 +57,27 @@ class InitController extends Controller
         // $last = clone $first;
         // $last->usuario = '1098123456';
         // $this->service1->save($last);
-
-
-
+        print strtotime(date('d-m-y h:i:s'));        
         return ["Bienvenido a Gestor de Invetario"];
     }
 
     public function seedData() {
         // USUARIOS
         $_1ap = new ArqPerfil([
+            "id" => 1,
             "nombre" => "ADMIN",
             "descripcion" => "Perfil con todas las capacidades del sistema",
             "activo" => true,
         ]);
         $this->service2->save($_1ap);
         $_1au = new ArqUsuario([
+            "id" => 1,
             "usuario" => "1098731434",
             "contrasenia" => "8dIFT3taT1teOtoPfy1zL0",
             "perfil" => $_1ap,
         ]);
         $this->service1->save($_1au);
+        return ["Data Insertada"];
     }
 
 }

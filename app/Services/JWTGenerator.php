@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Services;
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+class JWTGenerator {
+
+    static private $privateKey = <<<EOD
+-----BEGIN RSA PRIVATE KEY-----
+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
+HaWfOojblp0hARWIYQgNgzT2a0S7+mk=
+-----END RSA PRIVATE KEY-----
+EOD;
+
+    static private $publicKey = <<<EOD
+-----BEGIN PUBLIC KEY-----
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAnoXizb56UNDjDYU+45kZ
+Lg2gfo+LdgwIWhs60GR/mR2kCZFnKDPXw/s5Wm8lbJ+/JKr921oaS7BWiOvn++L9
+y3RRmyYrJRyU7j7IICn8Jt91zyE2IWJ25fi4G1QkDgwLVw+3RFq7+ugbI+/3doOQ
+FYiCSBh7L2EjGO2LlVPp7Bj+Plm4btZh+T3Q0twqTCI1ksdykliIXSK7VbCaK9Ly
+4TTV5alhQ7mlCevy3GUEccXznf0/BQlfNeGZ8BheQqdQlZ0S/ToLYG+V6JvhnbR+
+frDQBMHq6ZnvqnZwvixFeNQi89UcVs4k7OCFBnzCZqJ3Jc9IYRt50p2bef+CYsey
+7uNc3JFhQb64n7TScusROqZSZ5l8SDu6I3gBry2/2sMov9TM7IPdIZkR8E6bi7AI
+qBPzRLZwhJvfnhI49/iygLdqh7rwWaqn6eUhZZXRIU2timp/LzVLWHGjnsKwqTf7
+x/1dUcVmLJFU7Lq6anPfeVNVan7xROQe5GWFSwY2KAZvLllwyiMl94Hi0q4ztV1X
+VwJmhG0ydMKClvIblt3juXd8WxLoyOkv02z3Sv1phBurIXClgFnYTVtlXS0CQqLD
+b9KjFXJUnJ+b08Z5Z6a1sbeEiCmtU4JZUa2o3MQScl9tF7bnNns0BgPsdThzPJsI
+vvpwO38X3PrQAUW0QxwOqR8CAwEAAQ==
+-----END PUBLIC KEY-----
+EOD;
+
+    static public function generateJWT($payload) {
+        return JWT::encode(["data" => "Pruebas de data"], JWTGenerator::$privateKey, 'RS256');
+    }
+
+    static public function decode($jwt) {
+        return JWT::decode($jwt, new Key(JWTGenerator::$publicKey, 'RS256'));
+    }
+
+}

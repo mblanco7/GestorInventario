@@ -54,7 +54,7 @@ class EntityService {
         if ($objeto->id != null) {
             $id = $objeto->id;
             $reference = $this->collection->document($id);
-            $reference->update($this->generateArray($objeto));
+            $reference->set($this->generateArray($objeto));
         } else {
             $array = $this->generateArray($objeto);
             $reference = $this->collection->add();

@@ -19,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('index', 'App\Http\Controllers\Api\InitController@index');
-Route::get('seedFbG1Id', 'App\Http\Controllers\Api\InitController@seedData');
+Route::get('index/seedFbG1Id', 'App\Http\Controllers\Api\InitController@seedData');
+
+Route::post('login/getToken', 'App\Http\Controllers\Api\LoginController@getToken');
