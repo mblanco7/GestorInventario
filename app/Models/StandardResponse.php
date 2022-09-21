@@ -4,11 +4,12 @@ namespace App\Models;
 
 class StandardResponse {
 
-    public $data;
-    public object $objeto;
-    public array $listado;
-    public string $error;
-
+    public string|int|float|null $data = null;
+    public ?object $objeto  = null;
+    public ?array  $listado = null;
+    public ?string $mensaje = null;
     
+    public ?bool   $correctToken = false;
+    public ?int    $status       = null;
 
 }

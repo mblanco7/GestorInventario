@@ -43,12 +43,22 @@ class ArqUsuariosService extends EntityService{
         return parent::saveEntity($objeto, ArqUsuario::path());
     }
 
-    public function validarExisteUsuario(string $usuario, string $contrasenia): ArqUsuario {
+    public function validarExisteUsuario(string $usuario, string $contrasenia): ArqUsuario|null {
         $password = Md5Crypt::crypt($contrasenia);
-        $existe = $this->collection
+        $filas = $this->collection
             ->where('usuario', '=', $usuario)
             ->where('contrasenia', '=', $password)
-            ->documents()->rows()[0]->data() ?? null;
+            ->documents()->rows();
+        $existe = sizeof($filas) > 0 ? $filas[0]->data() : null;
+        $existe = $existe != null ? new ArqUsuario($existe) : null;
+        return $existe;
+    }
+
+    public function getUsuarioPorNombre(string $usuario): ArqUsuario|null {
+        $filas = $this->collection
+            ->where('usuario', '=', $usuario)
+            ->documents()->rows();
+        $existe = sizeof($filas) > 0 ? $filas[0]->data() : null;
         $existe = $existe != null ? new ArqUsuario($existe) : null;
         return $existe;
     }

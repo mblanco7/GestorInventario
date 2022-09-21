@@ -57,7 +57,7 @@ class InitController extends Controller
         // $last = clone $first;
         // $last->usuario = '1098123456';
         // $this->service1->save($last);
-        print strtotime(date('d-m-y h:i:s'));        
+        
         return ["Bienvenido a Gestor de Invetario"];
     }
 

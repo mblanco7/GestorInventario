@@ -17,10 +17,11 @@ class Model {
             try {
                 if ($rf->getProperty($key) != null && $value != null) {
                     if (str_contains($rf->getProperty($key)->getType(), 'App\Models\Firebase\Entities')
-                        && gettype($value) == 'array') {
+                        || gettype($value) == 'array') {
                         $name = $rf->getProperty($key)->getType().'';
+                        $name = str_replace('?', '', $name);
                         $clase = new ReflectionClass($name);
-                        $instancia = $clase->newInstance($value);
+                        $instancia = $clase->newInstance(gettype($value) == 'object' ? $value->snapshot()->data() : $value);
                         $this->$key = $instancia;
                     } else {
                         $this->$key = $value;
