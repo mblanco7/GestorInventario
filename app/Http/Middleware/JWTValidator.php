@@ -36,7 +36,7 @@ class JWTValidator
             $request->attributes->add(['TokenData' => $jwt]);
         } catch (Exception $e) {
             $response = new StandardResponse();
-            $response->mensaje = $e->getMessage();
+            $response->mensaje = "TokenException: ".$e->getMessage();
             $response->correctToken = false;
             return response()->json($response);
         }
