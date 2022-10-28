@@ -3,7 +3,19 @@
 namespace App\Providers;
 
 use App\Models\Firebase\Services\ArqPerfilesService;
+use App\Models\Firebase\Services\ArqRolesPerfilesService;
+use App\Models\Firebase\Services\ArqRolesService;
 use App\Models\Firebase\Services\ArqUsuariosService;
+use App\Models\Firebase\Services\InvBodegasService;
+use App\Models\Firebase\Services\InvCategoriasService;
+use App\Models\Firebase\Services\InvColoresService;
+use App\Models\Firebase\Services\InvEstantesService;
+use App\Models\Firebase\Services\InvMarcasService;
+use App\Models\Firebase\Services\InvPasillosService;
+use App\Models\Firebase\Services\InvPisosService;
+use App\Models\Firebase\Services\InvProductosService;
+use App\Models\Firebase\Services\InvPuestosService;
+use App\Models\Firebase\Services\InvTallasService;
 use Google\Cloud\Firestore\FirestoreClient;
 use Illuminate\Support\ServiceProvider;
 use Kreait\Firebase\Factory;
@@ -19,6 +31,18 @@ class FireBaseServiceProvider extends ServiceProvider
     public $singletons = [
         ArqUsuariosService::class,
         ArqPerfilesService::class,
+        ArqRolesService::class,
+        ArqRolesPerfilesService::class,
+        InvBodegasService::class,
+        InvCategoriasService::class,
+        InvColoresService::class,
+        InvEstantesService::class,
+        InvMarcasService::class,
+        InvPasillosService::class,
+        InvPisosService::class,
+        InvProductosService::class,
+        InvPuestosService::class,
+        InvTallasService::class,
     ];
 
     /**

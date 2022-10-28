@@ -21,13 +21,20 @@ class Model {
                         $name = $rf->getProperty($key)->getType().'';
                         $name = str_replace('?', '', $name);
                         $clase = new ReflectionClass($name);
-                        $instancia = $clase->newInstance(gettype($value) == 'object' ? $value->snapshot()->data() : $value);
+                        $instancia = null;
+                        if (method_exists($value, "snapshot")) {
+                            $instancia = $clase->newInstance($value->snapshot()->data());
+                        } else {
+                            $instancia = gettype($value) == 'object' ? $value : $clase->newInstance($value);
+                        }
                         $this->$key = $instancia;
                     } else {
                         $this->$key = $value;
                     }
                 }
-            } catch (Exception $e) {}
+            } catch (Exception $e) {
+                print $e->getMessage();
+            }
         }
     }
 

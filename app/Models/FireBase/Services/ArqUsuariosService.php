@@ -4,6 +4,7 @@ namespace App\Models\Firebase\Services;
 
 use App\Models\Firebase\Entities\ArqUsuario;
 use App\Models\Firebase\EntityService;
+use App\Models\Firebase\Iterators\ArqUsuarioList;
 use App\Services\Md5Crypt;
 use Google\Cloud\Firestore\FirestoreClient;
 
@@ -14,20 +15,20 @@ class ArqUsuariosService extends EntityService{
        parent::__construct($factory, ArqUsuario::path());
     }
 
-    public function getById(string $id): ArqUsuario{
+    public function getById(string $id): ?ArqUsuario{
         $preresults = parent::getById($id);
-        return new ArqUsuario($preresults);
+        return $preresults != null ? new ArqUsuario($preresults) : null;
     }
 
     /**
      * @return array<ArqUsuario>
      */
-    public function getAll(): array{
-        $results = [];
-        $preresults = parent::getAll();
+    public function getAll(): ArqUsuarioList{
+        $results = new ArqUsuarioList();
+        $preresults = parent::getAllArray();
         foreach ($preresults as $key => $value) {
             $objeto = new ArqUsuario($value);
-            array_push($results, $objeto);
+            $results->add($objeto);
         }
         return $results;
     }
@@ -41,6 +42,10 @@ class ArqUsuariosService extends EntityService{
             }
         }
         return parent::saveEntity($objeto, ArqUsuario::path());
+    }
+
+    public function delete(ArqUsuario $objeto) : bool {
+        return parent::deleteEntity($objeto);
     }
 
     public function validarExisteUsuario(string $usuario, string $contrasenia): ArqUsuario|null {

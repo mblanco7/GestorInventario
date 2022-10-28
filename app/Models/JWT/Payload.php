@@ -37,7 +37,7 @@ class Payload extends Model{
     public int    $exp;
 
     public object $usuario;
-    public object  $perfil;
+    public object $perfil;
     public array  $roles;
 
 }

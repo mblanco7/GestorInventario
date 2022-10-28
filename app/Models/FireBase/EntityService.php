@@ -22,12 +22,17 @@ class EntityService {
     }
 
     public function getById(string $id) {
-        $result = ($this->collection->where('id', '=', $id)->documents()->rows()[0])->data();
-        $this->initializeAtrributes($result, $this->deep);
+        $result = null;
+        try {
+            $result = ($this->collection->where('id', '=', $id)->documents()->rows()[0])->data();
+            $this->initializeAtrributes($result, $this->deep);
+        } catch (Exception $e) {
+            
+        }
         return $result;
     }
 
-    public function getAll() : array {
+    protected function getAllArray() : array {
         $results = [];
         $documents = $this->collection->documents();
         foreach ($documents as $document) {
@@ -62,6 +67,15 @@ class EntityService {
             $this->collection->document($objeto->id)->set($array);
         }
         return $objeto;
+    }
+
+    public function deleteEntity(Model $objeto) {
+        if ($objeto->id != null) {
+            $id = $objeto->id;
+            $reference = $this->collection->document($id);
+            $reference->delete();
+        }
+        return true;
     }
 
     public function generateArray($objeto) {

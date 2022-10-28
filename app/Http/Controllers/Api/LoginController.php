@@ -35,15 +35,15 @@ class LoginController extends Controller
         $response = new StandardResponse();
         $requestData = $request->all();
         if ($requestData['usuario'] == null || $requestData['usuario'] == '') {
-            return $this->return400("Debe ingresar el nombre de usuario");
+            return $this->returnMessage400("Debe ingresar el nombre de usuario");
         }
         if ($requestData['contrasenia'] == null || $requestData['contrasenia'] == '') {
-            return $this->return400("Debe ingresar el nombre de usuario");
+            return $this->returnMessage400("Debe ingresar el nombre de usuario");
         }
         try {
             $user = $this->service->validarExisteUsuario($requestData['usuario'], $requestData['contrasenia']);
         } catch (Exception $e) {
-            return $this->return500("Problemas al intentar consultar el usuario");
+            return $this->returnMessage500("Problemas al intentar consultar el usuario");
         }
         if ($user != null) {
             $payload = Payload::standard();
@@ -55,9 +55,9 @@ class LoginController extends Controller
         } else {
             $user = $this->service->getUsuarioPorNombre($requestData['usuario']);
             if ($user != null) {
-                return $this->return401("Contraseña incorrecta");
+                return $this->returnMessage401("Contraseña incorrecta");
             } else {
-                return $this->return401("El nombre de usuario es incorrecto");
+                return $this->returnMessage401("El nombre de usuario es incorrecto o no existe");
             }
         }
         return $this->return200($response);
@@ -65,9 +65,10 @@ class LoginController extends Controller
 
     public function validateToken(Request $request) {
         $response = new StandardResponse();
-        $response = 
         $tokenData = new Payload($request->get('TokenData'));
-        $usuario_nombre = $tokenData->usuario;
+        $usuario_nombre = $tokenData->usuario->usuario;
+        $response->data = $usuario_nombre;
+        return $this->return200($response);
     }
 
 }

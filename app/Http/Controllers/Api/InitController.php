@@ -4,16 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Firebase\Entities\ArqPerfil;
+use App\Models\Firebase\Entities\ArqRol;
+use App\Models\Firebase\Entities\ArqRolPerfil;
 use App\Models\Firebase\Entities\ArqUsuario;
 use App\Models\Firebase\Iterators\ArqPerfilList;
 use App\Models\Firebase\Services\ArqPerfilesService;
+use App\Models\Firebase\Services\ArqRolesPerfilesService;
+use App\Models\Firebase\Services\ArqRolesService;
 use App\Models\Firebase\Services\ArqUsuariosService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use Firebase\JWT\JWT;
-
+use Illuminate\Http\Request;
 use Kreait\Firebase\Factory;
 
 class InitController extends Controller
@@ -22,6 +26,8 @@ class InitController extends Controller
 
     private ArqUsuariosService $service1;
     private ArqPerfilesService $service2;
+    private ArqRolesService $service3;
+    private ArqRolesPerfilesService $service4;
 
     /**
      * Create a new controller instance.
@@ -32,10 +38,14 @@ class InitController extends Controller
     public function __construct(
         ArqUsuariosService $service1,
         ArqPerfilesService $service2,
+        ArqRolesService $service3,
+        ArqRolesPerfilesService $service4,
         Factory $factory,
     ) {
         $this->service1 = $service1;
         $this->service2 = $service2;
+        $this->service3 = $service3;
+        $this->service4 = $service4;
     }
 
     public function index() 
@@ -77,7 +87,27 @@ class InitController extends Controller
             "perfil" => $_1ap,
         ]);
         $this->service1->save($_1au);
+
+        $_1ar = new ArqRol([
+            "id" => 1,
+            "nombre" => "ADMIN",
+            "descripcion" => "Rol con todas las capacidades del sistema",
+            "activo" => true
+        ]);
+        $this->service3->save($_1ar);
+
+        $_1arp = new ArqRolPerfil([
+            "id" => 1,
+            "perfil" => $_1ap,
+            "rol" => $_1ar
+        ]);
+        $this->service4->save($_1arp);
+
         return ["Data Insertada"];
     }
 
+    public function redirecRest(Request $request) {
+        $redirect = 'http://www.google.com';
+        return redirect($redirect);
+    }
 }

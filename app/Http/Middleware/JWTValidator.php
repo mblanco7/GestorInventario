@@ -37,8 +37,8 @@ class JWTValidator
         } catch (Exception $e) {
             $response = new StandardResponse();
             $response->mensaje = $e->getMessage();
-            $response->correctToken = true;
-            return response($response, 401);
+            $response->correctToken = false;
+            return response()->json($response);
         }
         $response = $next($request);
         return $response;
