@@ -17,15 +17,15 @@ class Controller extends BaseController
             $object->status = $status;
             $object->correctToken = true;
             return response()->json($object, $status);
-        } else if (str_contains(get_class($object), 'FireBase/Entities')) {
+        } else if (str_contains(get_class($object), 'Firebase\Entities')) {
             $robject = new StandardResponse();
             $robject->objeto = $object;
             $robject->status = $status;
             $robject->correctToken = true;
             return response()->json($robject, $status);
-        } else if (str_contains(get_class($object), 'FireBase/Iterators')) {
+        } else if (str_contains(get_class($object), 'Firebase\Iterators')) {
             $robject = new StandardResponse();
-            $robject->listado = $object;
+            $robject->listado = $object->toArray();
             $robject->status = $status;
             $robject->correctToken = true;
             return response()->json($robject, $status);
