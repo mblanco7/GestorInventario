@@ -11,5 +11,6 @@ class ArqUsuario extends Model
     public string $usuario;
     public string $contrasenia;
     public ?ArqPerfil $perfil;
+    public bool $activo;
     
 }

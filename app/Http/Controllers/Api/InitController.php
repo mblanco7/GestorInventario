@@ -85,6 +85,7 @@ class InitController extends Controller
             "usuario" => "1098731434",
             "contrasenia" => "8dIFT3taT1teOtoPfy1zL0",
             "perfil" => $_1ap,
+            "activo" => true,
         ]);
         $this->service1->save($_1au);
 
@@ -99,7 +100,8 @@ class InitController extends Controller
         $_1arp = new ArqRolPerfil([
             "id" => 1,
             "perfil" => $_1ap,
-            "rol" => $_1ar
+            "rol" => $_1ar,
+            "activo" => true,
         ]);
         $this->service4->save($_1arp);
 

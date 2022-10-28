@@ -10,5 +10,6 @@ class ArqRolPerfil extends Model
 
     public ArqPerfil $perfil;
     public ArqRol $rol;
+    public bool $activo;
 
 }
