@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Firebase\Entities\InvBodega;
-use App\Models\Firebase\Services\InvBodegasService;
+use App\Services\Firebase\InvBodegasService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

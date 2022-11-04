@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Firebase\Entities\InvColor;
-use App\Models\Firebase\Services\InvColoresService;
+use App\Services\Firebase\InvColoresService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

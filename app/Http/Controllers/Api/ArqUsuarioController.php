@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Firebase\Entities\ArqUsuario;
-use App\Models\Firebase\Services\ArqUsuariosService;
+use App\Services\Firebase\ArqUsuariosService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

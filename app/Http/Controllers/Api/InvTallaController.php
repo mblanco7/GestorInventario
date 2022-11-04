@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Firebase\Entities\InvTalla;
-use App\Models\Firebase\Services\InvTallasService;
+use App\Services\Firebase\InvTallasService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

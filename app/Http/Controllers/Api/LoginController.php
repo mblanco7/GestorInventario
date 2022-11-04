@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Firebase\Entities\Arquitectura\ArqUsuario;
-use App\Models\Firebase\Services\ArqUsuariosService;
+use App\Services\Firebase\ArqUsuariosService;
 use App\Models\JWT\Payload;
 use App\Models\StandardResponse;
 use App\Services\JWTGenerator;

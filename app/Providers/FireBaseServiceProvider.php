@@ -2,20 +2,20 @@
 
 namespace App\Providers;
 
-use App\Models\Firebase\Services\ArqPerfilesService;
-use App\Models\Firebase\Services\ArqRolesPerfilesService;
-use App\Models\Firebase\Services\ArqRolesService;
-use App\Models\Firebase\Services\ArqUsuariosService;
-use App\Models\Firebase\Services\InvBodegasService;
-use App\Models\Firebase\Services\InvCategoriasService;
-use App\Models\Firebase\Services\InvColoresService;
-use App\Models\Firebase\Services\InvEstantesService;
-use App\Models\Firebase\Services\InvMarcasService;
-use App\Models\Firebase\Services\InvPasillosService;
-use App\Models\Firebase\Services\InvPisosService;
-use App\Models\Firebase\Services\InvProductosService;
-use App\Models\Firebase\Services\InvPuestosService;
-use App\Models\Firebase\Services\InvTallasService;
+use App\Services\Firebase\ArqPerfilesService;
+use App\Services\Firebase\ArqRolesPerfilesService;
+use App\Services\Firebase\ArqRolesService;
+use App\Services\Firebase\ArqUsuariosService;
+use App\Services\Firebase\InvBodegasService;
+use App\Services\Firebase\InvCategoriasService;
+use App\Services\Firebase\InvColoresService;
+use App\Services\Firebase\InvEstantesService;
+use App\Services\Firebase\InvMarcasService;
+use App\Services\Firebase\InvPasillosService;
+use App\Services\Firebase\InvPisosService;
+use App\Services\Firebase\InvProductosService;
+use App\Services\Firebase\InvPuestosService;
+use App\Services\Firebase\InvTallasService;
 use Google\Cloud\Firestore\FirestoreClient;
 use Illuminate\Support\ServiceProvider;
 use Kreait\Firebase\Factory;

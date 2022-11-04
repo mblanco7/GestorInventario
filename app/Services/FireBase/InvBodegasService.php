@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Firebase\Services;
+namespace App\Services\Firebase;
 
 use App\Models\Firebase\Entities\InvBodega;
 use App\Models\Firebase\EntityService;
