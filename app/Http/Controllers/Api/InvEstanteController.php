@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\InvEstante;
-use App\Services\Firebase\InvEstantesService;
+use App\Models\FireBase\Entities\InvEstante;
+use App\Services\FireBase\InvEstantesService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

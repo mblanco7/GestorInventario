@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\InvColor;
-use App\Services\Firebase\InvColoresService;
+use App\Models\FireBase\Entities\InvColor;
+use App\Services\FireBase\InvColoresService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\ArqRol;
-use App\Services\Firebase\ArqRolesService;
+use App\Models\FireBase\Entities\ArqRol;
+use App\Services\FireBase\ArqRolesService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

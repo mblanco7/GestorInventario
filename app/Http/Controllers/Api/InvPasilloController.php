@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\InvPasillo;
-use App\Services\Firebase\InvPasillosService;
+use App\Models\FireBase\Entities\InvPasillo;
+use App\Services\FireBase\InvPasillosService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvColor;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvColorList;
+use App\Models\FireBase\Entities\InvColor;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvColorList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvColoresService extends EntityService{

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Firebase\Iterators;
+namespace App\Models\FireBase\Iterators;
 
 use App\Core\Types\AbstractList;
-use App\Models\Firebase\Entities\InvTalla;
+use App\Models\FireBase\Entities\InvTalla;
 
 class InvTallaList extends AbstractList
 {

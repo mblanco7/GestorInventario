@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\ArqPerfil;
-use App\Models\Firebase\Entities\ArqRol;
-use App\Models\Firebase\Entities\ArqRolPerfil;
-use App\Models\Firebase\Entities\ArqUsuario;
-use App\Models\Firebase\Iterators\ArqPerfilList;
-use App\Services\Firebase\ArqPerfilesService;
-use App\Services\Firebase\ArqRolesPerfilesService;
-use App\Services\Firebase\ArqRolesService;
-use App\Services\Firebase\ArqUsuariosService;
+use App\Models\FireBase\Entities\ArqPerfil;
+use App\Models\FireBase\Entities\ArqRol;
+use App\Models\FireBase\Entities\ArqRolPerfil;
+use App\Models\FireBase\Entities\ArqUsuario;
+use App\Models\FireBase\Iterators\ArqPerfilList;
+use App\Services\FireBase\ArqPerfilesService;
+use App\Services\FireBase\ArqRolesPerfilesService;
+use App\Services\FireBase\ArqRolesService;
+use App\Services\FireBase\ArqUsuariosService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
-use Kreait\Firebase\Factory;
+use Kreait\FireBase\Factory;
 
 class InitController extends Controller
 {

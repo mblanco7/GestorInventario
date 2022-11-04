@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\ArqPerfil;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\ArqPerfilList;
+use App\Models\FireBase\Entities\ArqPerfil;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\ArqPerfilList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class ArqPerfilesService extends EntityService{

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\ArqUsuario;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\ArqUsuarioList;
+use App\Models\FireBase\Entities\ArqUsuario;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\ArqUsuarioList;
 use App\Services\Md5Crypt;
 use Google\Cloud\Firestore\FirestoreClient;
 

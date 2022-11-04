@@ -1750,7 +1750,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Kreait\\Firebase\\": "src/Firebase"
+                    "Kreait\\FireBase\\": "src/Firebase"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1825,7 +1825,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kreait\\Firebase\\JWT\\": "src/JWT"
+                    "Kreait\\FireBase\\JWT\\": "src/JWT"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1891,16 +1891,16 @@
                 },
                 "laravel": {
                     "providers": [
-                        "Kreait\\Laravel\\Firebase\\ServiceProvider"
+                        "Kreait\\Laravel\\FireBase\\ServiceProvider"
                     ],
                     "aliases": {
-                        "Firebase": "Kreait\\Laravel\\Firebase\\Facades\\Firebase"
+                        "Firebase": "Kreait\\Laravel\\FireBase\\Facades\\FireBase"
                     }
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Kreait\\Laravel\\Firebase\\": "src"
+                    "Kreait\\Laravel\\FireBase\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",

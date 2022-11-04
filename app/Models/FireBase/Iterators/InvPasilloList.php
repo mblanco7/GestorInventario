@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Firebase\Iterators;
+namespace App\Models\FireBase\Iterators;
 
 use App\Core\Types\AbstractList;
-use App\Models\Firebase\Entities\InvPasillo;
+use App\Models\FireBase\Entities\InvPasillo;
 
 class InvPasilloList extends AbstractList
 {

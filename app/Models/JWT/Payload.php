@@ -2,7 +2,7 @@
 
 namespace App\Models\JWT;
 
-use App\Models\Firebase\Model;
+use App\Models\FireBase\Model;
 use DateTimeImmutable;
 use Exception;
 use Illuminate\Support\Facades\Config;

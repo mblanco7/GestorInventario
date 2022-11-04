@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Firebase\Entities;
+namespace App\Models\FireBase\Entities;
 
-use App\Models\Firebase\Model;
+use App\Models\FireBase\Model;
 
 class InvColor extends Model
 {

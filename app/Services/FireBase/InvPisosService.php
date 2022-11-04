@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvPiso;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvPisoList;
+use App\Models\FireBase\Entities\InvPiso;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvPisoList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvPisosService extends EntityService{

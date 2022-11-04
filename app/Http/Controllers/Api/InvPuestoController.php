@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\InvPuesto;
-use App\Services\Firebase\InvPuestosService;
+use App\Models\FireBase\Entities\InvPuesto;
+use App\Services\FireBase\InvPuestosService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

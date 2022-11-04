@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\InvMarca;
-use App\Services\Firebase\InvMarcasService;
+use App\Models\FireBase\Entities\InvMarca;
+use App\Services\FireBase\InvMarcasService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

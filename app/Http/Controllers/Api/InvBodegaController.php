@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\InvBodega;
-use App\Services\Firebase\InvBodegasService;
+use App\Models\FireBase\Entities\InvBodega;
+use App\Services\FireBase\InvBodegasService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

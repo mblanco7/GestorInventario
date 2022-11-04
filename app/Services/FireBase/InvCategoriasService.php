@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvCategoria;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvCategoriaList;
+use App\Models\FireBase\Entities\InvCategoria;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvCategoriaList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvCategoriasService extends EntityService{

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvProducto;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvProductoList;
+use App\Models\FireBase\Entities\InvProducto;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvProductoList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvProductosService extends EntityService{

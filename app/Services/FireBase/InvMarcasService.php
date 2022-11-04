@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvMarca;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvMarcaList;
+use App\Models\FireBase\Entities\InvMarca;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvMarcaList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvMarcasService extends EntityService{

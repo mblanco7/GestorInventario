@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvPasillo;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvPasilloList;
+use App\Models\FireBase\Entities\InvPasillo;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvPasilloList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvPasillosService extends EntityService{

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvTalla;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvTallaList;
+use App\Models\FireBase\Entities\InvTalla;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvTallaList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvTallasService extends EntityService{

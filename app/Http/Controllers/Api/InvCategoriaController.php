@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\InvCategoria;
-use App\Services\Firebase\InvCategoriasService;
+use App\Models\FireBase\Entities\InvCategoria;
+use App\Services\FireBase\InvCategoriasService;
 use App\Models\StandardResponse;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

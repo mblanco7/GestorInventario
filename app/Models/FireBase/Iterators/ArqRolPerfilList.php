@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Firebase\Iterators;
+namespace App\Models\FireBase\Iterators;
 
 use App\Core\Types\AbstractList;
-use App\Models\Firebase\Entities\ArqRolPerfil;
+use App\Models\FireBase\Entities\ArqRolPerfil;
 
 class ArqRolPerfilList extends AbstractList
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Firebase;
+namespace App\Models\FireBase;
 
 use Exception;
 use ReflectionClass;
@@ -16,7 +16,7 @@ class Model {
         foreach ($atributos as $key => $value) {
             try {
                 if ($rf->getProperty($key) != null && $value != null) {
-                    if (str_contains($rf->getProperty($key)->getType(), 'App\Models\Firebase\Entities')
+                    if (str_contains($rf->getProperty($key)->getType(), 'App\Models\FireBase\Entities')
                         || gettype($value) == 'array') {
                         $name = $rf->getProperty($key)->getType().'';
                         $name = str_replace('?', '', $name);

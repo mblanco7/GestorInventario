@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Firebase\Entities\Arquitectura\ArqUsuario;
-use App\Services\Firebase\ArqUsuariosService;
+use App\Models\FireBase\Entities\Arquitectura\ArqUsuario;
+use App\Services\FireBase\ArqUsuariosService;
 use App\Models\JWT\Payload;
 use App\Models\StandardResponse;
 use App\Services\JWTGenerator;
@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Kreait\Firebase\Factory;
+use Kreait\FireBase\Factory;
 
 class LoginController extends Controller
 {

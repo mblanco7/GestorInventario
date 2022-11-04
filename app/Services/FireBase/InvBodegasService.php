@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvBodega;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvBodegaList;
+use App\Models\FireBase\Entities\InvBodega;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvBodegaList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvBodegasService extends EntityService{

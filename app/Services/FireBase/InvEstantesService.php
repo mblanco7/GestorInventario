@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Firebase;
+namespace App\Services\FireBase;
 
-use App\Models\Firebase\Entities\InvEstante;
-use App\Models\Firebase\EntityService;
-use App\Models\Firebase\Iterators\InvEstanteList;
+use App\Models\FireBase\Entities\InvEstante;
+use App\Models\FireBase\EntityService;
+use App\Models\FireBase\Iterators\InvEstanteList;
 use Google\Cloud\Firestore\FirestoreClient;
 
 class InvEstantesService extends EntityService{

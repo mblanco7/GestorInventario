@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Firebase;
+namespace App\Models\FireBase;
 
 use Exception;
 use Google\Cloud\Firestore\CollectionReference;
@@ -84,7 +84,7 @@ class EntityService {
         foreach ($objeto as $attr => $value) {
             try {
                 $property = $rf->getProperty($attr);
-                if (str_contains($property->getType(), 'App\Models\Firebase\Entities')) {
+                if (str_contains($property->getType(), 'App\Models\FireBase\Entities')) {
                     $documentReference = $this->database->collection($value->path())->document($value->id);
                     $array[$attr] = $documentReference;
                 } else {
