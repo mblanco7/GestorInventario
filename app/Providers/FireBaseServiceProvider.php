@@ -18,8 +18,7 @@ use App\Services\FireBase\InvPuestosService;
 use App\Services\FireBase\InvTallasService;
 use Google\Cloud\Firestore\FirestoreClient;
 use Illuminate\Support\ServiceProvider;
-use Kreait\FireBase\Factory;
-
+use Kreait\Firebase\Factory;
 
 class FireBaseServiceProvider extends ServiceProvider
 {
