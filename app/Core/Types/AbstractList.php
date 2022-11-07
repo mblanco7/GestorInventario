@@ -52,6 +52,12 @@ abstract class AbstractList implements Iterator {
     public function toArray() : array{
         return $this->array;
     }
+    public function indexOf($object) {
+        foreach($this->array as $i => $o) {
+            if ($o == $object) return $i;
+        }
+        return -1;
+    }
 
     /**
      * Convert the model to its string representation.

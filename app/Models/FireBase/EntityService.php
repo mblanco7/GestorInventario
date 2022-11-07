@@ -45,6 +45,10 @@ class EntityService {
         return $results;
     }
 
+    public function initializeAtrributesExternal(&$data) {
+        $this->initializeAtrributes($data, $this->deep);
+    }
+
     private function initializeAtrributes(&$data, int $deep) {
         foreach ($data as $attr => $value) {
             if ($deep > 0 && gettype($value) == 'object' && get_class($value) == 'Google\Cloud\Firestore\DocumentReference') {

@@ -4,6 +4,7 @@ namespace App\Models\FireBase;
 
 use Exception;
 use ReflectionClass;
+use Throwable;
 
 class Model {
 
@@ -16,23 +17,22 @@ class Model {
         foreach ($atributos as $key => $value) {
             try {
                 if ($rf->getProperty($key) != null && $value != null) {
-                    if (str_contains($rf->getProperty($key)->getType(), 'App\Models\FireBase\Entities')
-                        || gettype($value) == 'array') {
+                    if (str_contains($rf->getProperty($key)->getType(), 'App\Models\FireBase\Entities') || gettype($value) == 'array') {
                         $name = $rf->getProperty($key)->getType().'';
                         $name = str_replace('?', '', $name);
                         $clase = new ReflectionClass($name);
                         $instancia = null;
-                        if (method_exists($value, "snapshot")) {
-                            $instancia = $clase->newInstance($value->snapshot()->data());
-                        } else {
+                        // if (gettype($value) != 'array' && method_exists($value, "snapshot")) {
+                        //     $instancia = $clase->newInstance($value->snapshot()->data());
+                        // } else {
                             $instancia = gettype($value) == 'object' ? $value : $clase->newInstance($value);
-                        }
+                        // }
                         $this->$key = $instancia;
                     } else {
                         $this->$key = $value;
                     }
                 }
-            } catch (Exception $e) {
+            } catch (Throwable $e) {
                 print $e->getMessage();
             }
         }

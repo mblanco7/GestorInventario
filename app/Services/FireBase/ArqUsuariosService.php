@@ -55,6 +55,7 @@ class ArqUsuariosService extends EntityService{
             ->where('contrasenia', '=', $password)
             ->documents()->rows();
         $existe = sizeof($filas) > 0 ? $filas[0]->data() : null;
+        $this->initializeAtrributesExternal($existe);
         $existe = $existe != null ? new ArqUsuario($existe) : null;
         return $existe;
     }

@@ -36,6 +36,8 @@ Route::get('index', 'App\Http\Controllers\Api\InitController@index');
 Route::get('index/redirect', 'App\Http\Controllers\Api\InitController@redirecRest');
 Route::get('index/seedFbG1Id', 'App\Http\Controllers\Api\InitController@seedData');
 
+Route::get('seed', 'App\Http\Controllers\Data\Start\DataStartController@seed');
+
 Route::post('login/getToken', 'App\Http\Controllers\Api\LoginController@getToken');
 Route::middleware(['JWTauth'])->group(function () {
     Route::prefix('login')->controller(LoginController::class)->group(function () {
