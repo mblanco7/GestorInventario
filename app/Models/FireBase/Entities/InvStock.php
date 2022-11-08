@@ -12,6 +12,7 @@ class InvStock extends Model
     public InvColor $color;
     public InvPuesto $ubicacion;
     public int $cantidad;
-    public float $valor;
+    public float $valorUnitario;
+    public bool $activo;
 
 }

@@ -59,7 +59,7 @@ class EntityService {
         }
     }
 
-    public function saveEntity(Model $objeto) {
+    protected function saveEntity(Model $objeto) {
         if ($objeto->id != null) {
             $id = $objeto->id;
             $reference = $this->collection->document($id);
@@ -73,7 +73,7 @@ class EntityService {
         return $objeto;
     }
 
-    public function deleteEntity(Model $objeto) {
+    protected function deleteEntity(Model $objeto) {
         if ($objeto->id != null) {
             $id = $objeto->id;
             $reference = $this->collection->document($id);
@@ -82,7 +82,7 @@ class EntityService {
         return true;
     }
 
-    public function generateArray($objeto) {
+    protected function generateArray($objeto) {
         $array = [];
         $rf = new ReflectionClass($objeto::class);
         foreach ($objeto as $attr => $value) {

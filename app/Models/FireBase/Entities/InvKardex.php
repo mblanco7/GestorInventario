@@ -9,7 +9,8 @@ class InvKardex extends Model
     public TipoMovimiento $tipoMovimiento;
     public InvProducto $producto;
     public int $cantidad;
-    public float $valor;
+    public float $valorUnitario;
+    public float $valorTotal;
 
 }
 
